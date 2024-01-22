@@ -6,14 +6,14 @@ import sys
 def safe_print_integer_err(value):
     """Prints an integer with "{:d}".format().
 
-    If a ValueError message is caught, a 
-    message is printed to error.
+    If a ValueError message is caught, a corresponding
+    message is printed to standard error.
 
     Args:
-         int: The integer to print.
+        value (int): The integer to print.
 
     Returns:
-        If a Error occurs - False.
+        If a TypeError or ValueError occurs - False.
         Otherwise - True.
     """
     try:
