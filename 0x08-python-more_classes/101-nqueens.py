@@ -6,8 +6,7 @@ import sys
 def init_board(n):
     """Initialize an `n`x`n` sized chessboard with 0's."""
     board = []
-    [board.append([]) for i in range(n)]
-    [row.append(' ') for i in range(n) for row in board]
+    board = [[' '] * n for _ in range(n)]
     return (board)
 
 
@@ -64,7 +63,7 @@ def xout(board, row, col):
     for r in range(row - 1, -1, -1):
         if c < 0:
             break
-        board[r][c]
+        board[r][c] = "x"
         c -= 1
     # X out all spots diagonally up to the right
     c = col + 1
