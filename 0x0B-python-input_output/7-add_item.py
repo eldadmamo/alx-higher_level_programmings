@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""A script that add all arg python
-and save file"""
+"""A script that add all arg in a pythin list
+and save them in a file"""
 
 from sys import argv
 
