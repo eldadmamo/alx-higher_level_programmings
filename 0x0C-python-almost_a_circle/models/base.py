@@ -1,8 +1,10 @@
 #!/usr/bin/python3
-'''Base class'''
+'''Base class.'''
+
+
 
 class Base:
-    '''A base Object oriented programming'''
+    '''base of our object oriented'''
 
     __nb_objects = 0
 
