@@ -9,16 +9,17 @@ import io
 
 
 class TestSquare(unittest.TestCase):
-    '''Class Base'''
+    '''Tests the Base class.'''
 
     def setUp(self):
         '''Imports module, instantiates class'''
         Base._Base__nb_objects = 0
 
     def tearDown(self):
-        '''Cleans up test_method.'''
+        '''Cleans up after each test_method.'''
         pass
 
+    # ----------------- Tests for #2 ------------------------
 
     def test_A_class(self):
         '''Tests Square class type.'''
@@ -126,6 +127,8 @@ were given"
         self.assertEqual(r.x, 102)
         self.assertEqual(r.y, 103)
 
+    # ----------------- Tests for #3 ------------------------
+
     def invalid_types(self):
         '''Returns tuple of types for validation.'''
         t = (3.14, -1.1, float('inf'), float('-inf'), True, "str", (2,),
@@ -133,7 +136,7 @@ were given"
         return t
 
     def test_G_validate_type(self):
-        '''Tests property validate.'''
+        '''Tests property validation.'''
         r = Square(1)
         attributes = ["x", "y"]
         for attribute in attributes:
@@ -149,7 +152,7 @@ were given"
             self.assertEqual(str(e.exception), s)
 
     def test_G_validate_value_negative_gt(self):
-        '''Tests property'''
+        '''Tests property validation.'''
         r = Square(1, 2)
         attributes = ["size"]
         for attribute in attributes:
@@ -169,7 +172,7 @@ were given"
             self.assertEqual(str(e.exception), s)
 
     def test_G_validate_value_zero(self):
-        '''Tests property'''
+        '''Tests property validation.'''
         r = Square(1, 2)
         attributes = ["size"]
         for attribute in attributes:
@@ -179,7 +182,7 @@ were given"
             self.assertEqual(str(e.exception), s)
 
     def test_H_property(self):
-        '''Tests property set/get'''
+        '''Tests property setting/getting.'''
         r = Square(1, 2)
         attributes = ["x", "y", "width", "height"]
         for attribute in attributes:
@@ -188,23 +191,24 @@ were given"
             self.assertEqual(getattr(r, attribute), n)
 
     def test_H_property_range_zero(self):
-        '''Tests property set/get.'''
+        '''Tests property setting/getting.'''
         r = Square(1, 2)
         r.x = 0
         r.y = 0
         self.assertEqual(r.x, 0)
         self.assertEqual(r.y, 0)
 
+    # ----------------- Tests for #4 ------------------------
     def test_I_area_no_args(self):
         '''Tests area() method signature.'''
         r = Square(5)
         with self.assertRaises(TypeError) as e:
             Square.area()
-        s = "area() missing 1: 'self'"
+        s = "area() missing 1 required positional argument: 'self'"
         self.assertEqual(str(e.exception), s)
 
     def test_I_area(self):
-        '''Tests area() compuation.'''
+        '''Tests area() method compuation.'''
         r = Square(6)
         self.assertEqual(r.area(), 36)
         w = randrange(10) + 1
@@ -233,12 +237,13 @@ were given"
             s1.size = 0
         self.assertEqual(str(e.exception), "width must be > 0")
 
+    # ----------------- Tests for #5 & #7 ------------------------
     def test_J_display_no_args(self):
         '''Tests display() method signature.'''
         r = Square(9)
         with self.assertRaises(TypeError) as e:
             Square.display()
-        s = "display() missing 1 required: 'self'"
+        s = "display() missing 1 required positional argument: 'self'"
         self.assertEqual(str(e.exception), s)
 
     def test_J_display_simple(self):
@@ -413,13 +418,14 @@ were given"
 """
         self.assertEqual(f.getvalue(), s)
 
+        # ----------------- Tests for #6 ------------------------
 
     def test_K_str_no_args(self):
         '''Tests __str__() method signature.'''
         r = Square(5, 2)
         with self.assertRaises(TypeError) as e:
             Square.__str__()
-        s = "__str__() missing 1 required: 'self'"
+        s = "__str__() missing 1 required positional argument: 'self'"
         self.assertEqual(str(e.exception), s)
 
     def test_K_str(self):
@@ -437,6 +443,7 @@ were given"
         s = '[Square] (40) 20/30 - 10'
         self.assertEqual(str(r), s)
 
+        # ----------------- Tests for #8 & #9 ------------------------
     def test_L_update_no_args(self):
         '''Tests update() method signature.'''
         r = Square(5, 2)
@@ -450,7 +457,7 @@ were given"
         self.assertEqual(r.__dict__, d)
 
     def test_L_update_args(self):
-        '''Tests update() args.'''
+        '''Tests update() postional args.'''
         r = Square(5, 2)
         d = r.__dict__.copy()
 
@@ -472,7 +479,7 @@ were given"
         self.assertEqual(r.__dict__, d)
 
     def test_L_update_args_bad(self):
-        '''Tests update() arg '''
+        '''Tests update() positional arg fubars.'''
         r = Square(5, 2)
         d = r.__dict__.copy()
 
@@ -496,7 +503,7 @@ were given"
         self.assertEqual(str(e.exception), s)
 
     def test_L_update_kwargs(self):
-        '''Tests update()'''
+        '''Tests update() keyword args.'''
         r = Square(5, 2)
         d = r.__dict__.copy()
 
@@ -518,7 +525,7 @@ were given"
         self.assertEqual(r.__dict__, d)
 
     def test_L_update_kwargs_2(self):
-        '''Tests update()'''
+        '''Tests update() keyword args.'''
         r = Square(5, 2)
         d = r.__dict__.copy()
 
@@ -567,11 +574,12 @@ were given"
         s1.update(size=7, id=89, y=1)
         self.assertEqual(str(s1), "[Square] (89) 12/1 - 7")
 
+    # ----------------- Tests for #14 ------------------------
     def test_M_to_dictionary(self):
         '''Tests to_dictionary() signature:'''
         with self.assertRaises(TypeError) as e:
             Square.to_dictionary()
-        s = "to_dictionary() missing 1: 'self'"
+        s = "to_dictionary() missing 1 required positional argument: 'self'"
         self.assertEqual(str(e.exception), s)
 
         r = Square(1)
