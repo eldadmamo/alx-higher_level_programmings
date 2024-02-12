@@ -5,7 +5,7 @@ import csv
 
 
 class Base:
-   '''base of our Object oriented programming'''
+    '''Base of our Object oriented.'''
 
     __nb_objects = 0
 
@@ -34,7 +34,7 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
-        '''Saves jsonified file'''
+        '''Saves jsonified object'''
         if list_objs is not None:
             list_objs = [o.to_dictionary() for o in list_objs]
         with open("{}.json".format(cls.__name__), "w", encoding="utf-8") as f:
@@ -56,7 +56,7 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        '''Loads string from file'''
+        '''Loads string file'''
         from os import path
         file = "{}.json".format(cls.__name__)
         if not path.isfile(file):
